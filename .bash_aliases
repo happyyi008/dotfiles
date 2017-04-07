@@ -21,3 +21,5 @@ alias gd='git diff'
 alias gcom='git commit'
 alias ga='git add '
 
+export EDITOR='/usr/bin/vim'
+export TF_CPP_MIN_LOG_LEVEL=2
