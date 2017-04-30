@@ -2,12 +2,15 @@
 alias school='ssh y637chen@linux.student.cs.uwaterloo.ca'
 
 # ls
-alias ll='ls -alF'
+alias ll='ls -l'
 alias la='ls -A'
-alias l='ls -CF'
+alias l='ls'
 
 # grep
+
+# recursive grep in file
 alias fgrep='grep -HrnIi'
+
 alias grep='grep --color=auto'
 export GREP_COLOR='1;37;41'
 
@@ -20,6 +23,8 @@ alias gb='git branch '
 alias gd='git diff'
 alias gcom='git commit'
 alias ga='git add '
-
+alias gst='git stash '
+alias gsh='git show'
+alias gcl='git clean -f'
 export EDITOR='/usr/bin/vim'
 export TF_CPP_MIN_LOG_LEVEL=2
