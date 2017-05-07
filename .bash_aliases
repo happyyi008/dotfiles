@@ -26,5 +26,7 @@ alias ga='git add '
 alias gst='git stash '
 alias gsh='git show'
 alias gcl='git clean -f'
+alias gpb='git push origin `bb`'
+
 export EDITOR='/usr/bin/vim'
 export TF_CPP_MIN_LOG_LEVEL=2
