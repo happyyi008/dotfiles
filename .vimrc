@@ -1,3 +1,12 @@
+
+"plugins
+call plug#begin('~/.vim/plugged')
+
+Plug 'rust-lang/rust.vim'
+
+call plug#end()
+
+
 "requires monokai.vim and powerline-status
 syntax on
 colorscheme monokai
@@ -21,7 +30,7 @@ set laststatus=2
 nnoremap <space> i<space><esc>
 
 " Commenting blocks of code.
-autocmd FileType c,cpp,java,scala let b:comment_leader = '// '
+autocmd FileType c,cpp,java,scala,rust let b:comment_leader = '// '
 autocmd FileType sh,ruby,python   let b:comment_leader = '# '
 autocmd FileType conf,fstab       let b:comment_leader = '# '
 autocmd FileType tex              let b:comment_leader = '% '
@@ -35,3 +44,5 @@ map <C-t><up> :tabr<cr>
 map <C-t><down> :tabl<cr>
 map <C-t><left> :tabp<cr>
 map <C-t><right> :tabn<cr>
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
