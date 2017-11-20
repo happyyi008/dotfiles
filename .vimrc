@@ -1,11 +1,8 @@
-
-"plugins
-call plug#begin('~/.vim/plugged')
-
-Plug 'rust-lang/rust.vim'
-
-call plug#end()
-
+" plugins
+ call plug#begin('~/dotfiles/.vim/plugged')
+ Plug 'fatih/vim-go'
+ Plug 'rust-lang/rust.vim'
+ call plug#end()
 
 "requires monokai.vim and powerline-status
 syntax on
@@ -21,9 +18,9 @@ set softtabstop=4
 set incsearch
 set hlsearch
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+" python from powerline.vim import setup as powerline_setup
+" python powerline_setup()
+" python del powerline_setup
 
 set laststatus=2
 
@@ -46,3 +43,4 @@ map <C-t><left> :tabp<cr>
 map <C-t><right> :tabn<cr>
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+
