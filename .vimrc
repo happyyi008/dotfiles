@@ -21,9 +21,13 @@ set hlsearch
 " Mac backspace is stupid
 set backspace=indent,eol,start
 
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
+" set environment specific configs
+let env=system("uname")
+if env!="Darwin\n"
+    python from powerline.vim import setup as powerline_setup
+    python powerline_setup()
+    python del powerline_setup
+endif
 
 set laststatus=2
 
