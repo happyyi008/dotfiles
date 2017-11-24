@@ -18,6 +18,9 @@ set softtabstop=4
 set incsearch
 set hlsearch
 
+" mac backspace is stupid
+set backspace=indent,eol,start
+
 " python from powerline.vim import setup as powerline_setup
 " python powerline_setup()
 " python del powerline_setup
