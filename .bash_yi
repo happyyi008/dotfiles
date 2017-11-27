@@ -9,5 +9,5 @@ getBranch() {
     fi
 }
 
-export PS1="[\w] \$(getBranch)\n\u ~>"
+export PS1="[\w] \$(getBranch)\n\u ~> "
 
