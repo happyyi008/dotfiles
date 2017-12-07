@@ -44,11 +44,8 @@ noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<C
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
 " tabs
-map <C-t><up> :tabr<cr>
-map <C-t><down> :tabl<cr>
-map <C-t><left> :tabp<cr>
-map <C-t><right> :tabn<cr>
-map <C-t><o> :tabe
+nnoremap <C-left> :tabp<CR>
+nnoremap <C-right> :tabn<CR>
 
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 
