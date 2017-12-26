@@ -29,7 +29,7 @@ alias gcom='git commit'
 alias ga='git add '
 alias gst='git stash '
 alias gsh='git show'
-alias gcl='git clean -f'
+alias gcl='git clean -fd'
 alias gpb='git push origin `bb`'
 
 export EDITOR='/usr/bin/vim'
