@@ -1,8 +1,11 @@
 " plugins
- call plug#begin('~/dotfiles/.vim/plugged')
+ call plug#begin('~/.vim/plugged')
  Plug 'fatih/vim-go'
  Plug 'rust-lang/rust.vim'
  call plug#end()
+
+" ignore vim version warning from vim-go
+let g:go_version_warning = 0
 
 "requires monokai.vim and powerline-status
 syntax on
