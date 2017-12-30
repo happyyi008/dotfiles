@@ -25,11 +25,18 @@ set hlsearch
 set backspace=indent,eol,start
 
 " set environment specific configs
-let env=system("uname")
-if env!="Darwin\n"
+let hostname=system("host")
+if hostname=="blackbox\n"
     python from powerline.vim import setup as powerline_setup
     python powerline_setup()
     python del powerline_setup
+endif
+
+if &term =~ '256color'
+" disable Background Color Erase (BCE) so that color schemes
+" render properly when inside 256-color tmux and GNU screen.
+" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
 endif
 
 set laststatus=2
