@@ -37,7 +37,7 @@ set laststatus=2
 nnoremap <space> i<space><esc>
 
 " Commenting blocks of code.
-autocmd FileType c,cpp,java,scala,rust let b:comment_leader = '// '
+autocmd FileType c,cpp,java,scala,rust,go let b:comment_leader = '// '
 autocmd FileType sh,ruby,python   let b:comment_leader = '# '
 autocmd FileType conf,fstab       let b:comment_leader = '# '
 autocmd FileType tex              let b:comment_leader = '% '

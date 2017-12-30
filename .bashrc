@@ -78,9 +78,13 @@ getBranch() {
       gb | grep '^*' | cut -c 3-
     fi
 }
+
 # set prompt
 export PS1="\e[0;34m[\w]\e[m \e[1;34m\$(getBranch)\e[m\n\u ~> "
 
 # vim is default editor
-export EDITOR='usr/bin/vim/'
+export EDITOR='/usr/bin/vim'
+
+# set for tmux colors and key binding in vim
+export TERM='xterm-256color'
 
