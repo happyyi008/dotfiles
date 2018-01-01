@@ -2,10 +2,8 @@
  call plug#begin('~/.vim/plugged')
  Plug 'fatih/vim-go'
  Plug 'rust-lang/rust.vim'
+ Plug 'vim-airline/vim-airline'
  call plug#end()
-
-" ignore vim version warning from vim-go
-let g:go_version_warning = 0
 
 "requires monokai.vim and powerline-status
 syntax on
@@ -23,14 +21,6 @@ set hlsearch
 
 " Mac backspace is stupid
 set backspace=indent,eol,start
-
-" set environment specific configs
-let hostname=system("host")
-if hostname=="blackbox\n"
-    python from powerline.vim import setup as powerline_setup
-    python powerline_setup()
-    python del powerline_setup
-endif
 
 if &term =~ '256color'
 " disable Background Color Erase (BCE) so that color schemes
@@ -57,12 +47,13 @@ noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<
 nnoremap <C-left> :tabp<CR>
 nnoremap <C-right> :tabn<CR>
 
-set runtimepath^=~/.vim/bundle/ctrlp.vim
+nmap <silent> <C-right> :wincmd l<cr>
+nmap <silent> <C-left> :wincmd h<cr>
+nmap <silent> <C-up> :wincmd k<cr>
+nmap <silent> <C-down> :wincmd j<cr>
 
-map <C-t><up> :tabr<cr>
-map <C-t><down> :tabl<cr>
-map <C-t><left> :tabp<cr>
-map <C-t><right> :tabn<cr>
-map <C-w> :q<cr>
-map <C-o> :tabe 
+" ctrlp plugin
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_show_hidden = 1
+let g:ctrlp_use_caching = 1
 
