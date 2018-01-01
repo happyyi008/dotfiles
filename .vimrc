@@ -34,12 +34,16 @@ set laststatus=2
 nnoremap <space> i<space><esc>
 
 " Commenting blocks of code.
-autocmd FileType c,cpp,java,scala,rust,go let b:comment_leader = '// '
-autocmd FileType sh,ruby,python   let b:comment_leader = '# '
-autocmd FileType conf,fstab       let b:comment_leader = '# '
-autocmd FileType tex              let b:comment_leader = '% '
-autocmd FileType mail             let b:comment_leader = '> '
-autocmd FileType vim              let b:comment_leader = '" '
+augroup comment_leaders
+    autocmd!
+    autocmd FileType c,cpp,java,scala,rust,go let b:comment_leader = '// '
+    autocmd FileType sh,ruby,python   let b:comment_leader = '# '
+    autocmd FileType conf,fstab       let b:comment_leader = '# '
+    autocmd FileType tex              let b:comment_leader = '% '
+    autocmd FileType mail             let b:comment_leader = '> '
+    autocmd FileType vim              let b:comment_leader = '" '
+augroup end
+
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
