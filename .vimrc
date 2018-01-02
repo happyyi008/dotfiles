@@ -14,13 +14,13 @@ colorscheme monokai
 
 " lets airline use powerline fonts for the angles and symbols
 " in status bar
-if system("hostname")=='blackbox\n'
+if system("hostname") == "blackbox\n"
     let g:airline_powerline_fonts = 1
 endif
 
 " enables tabline
 let g:airline#extensions#tabline#enabled = 1
-
+let g:airline_theme='murmur'
 if &term =~ '256color'
 " disable Background Color Erase (BCE) so that color schemes
  " render properly when inside 256-color tmux and GNU screen.
@@ -33,6 +33,8 @@ set laststatus=2
 
 
 set number
+" keep 5 lines buffer when scrolling
+set scrolloff=5
 set mouse=a
 set tabstop=4
 set expandtab
@@ -70,8 +72,12 @@ nmap <silent> <C-left> :wincmd h<cr>
 nmap <silent> <C-up> :wincmd k<cr>
 nmap <silent> <C-down> :wincmd j<cr>
 
-" ctrlp plugin
+" ctrlp settings
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_use_caching = 1
+let g:ctrlp_prompt_mappings = {
+    \ 'AcceptSelection("e")': ['<2-LeftMouse>'],
+    \ 'AcceptSelection("t")': ['<cr>'],
+    \ }
 
