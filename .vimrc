@@ -1,13 +1,36 @@
 " plugins
- call plug#begin('~/.vim/plugged')
- Plug 'fatih/vim-go'
- Plug 'rust-lang/rust.vim'
- Plug 'vim-airline/vim-airline'
- call plug#end()
+call plug#begin('~/.vim/plugged')
+    Plug 'fatih/vim-go'
+    Plug 'rust-lang/rust.vim'
+    Plug 'vim-airline/vim-airline'
+    Plug 'vim-airline/vim-airline-themes'
+    Plug 'tpope/vim-fugitive'
+call plug#end()
 
-"requires monokai.vim and powerline-status
+" For looks {
+" requires monokai.vim and fonts-powerline
 syntax on
 colorscheme monokai
+
+" lets airline use powerline fonts for the angles and symbols
+" in status bar
+if system("hostname")=='blackbox\n'
+    let g:airline_powerline_fonts = 1
+endif
+
+" enables tabline
+let g:airline#extensions#tabline#enabled = 1
+
+if &term =~ '256color'
+" disable Background Color Erase (BCE) so that color schemes
+ " render properly when inside 256-color tmux and GNU screen.
+" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
+endif
+
+set laststatus=2
+" }
+
 
 set number
 set mouse=a
@@ -21,15 +44,6 @@ set hlsearch
 
 " Mac backspace is stupid
 set backspace=indent,eol,start
-
-if &term =~ '256color'
-" disable Background Color Erase (BCE) so that color schemes
-" render properly when inside 256-color tmux and GNU screen.
-" see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-    set t_ut=
-endif
-
-set laststatus=2
 
 nnoremap <space> i<space><esc>
 
