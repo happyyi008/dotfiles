@@ -1,3 +1,4 @@
 # global gitignore file #
 *.swp
 *.pyc
+*.out

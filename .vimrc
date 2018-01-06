@@ -63,10 +63,11 @@ augroup end
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
-" tabs
-nnoremap <C-left> :tabp<CR>
-nnoremap <C-right> :tabn<CR>
+" move tabs
+nmap <silent> <C-h> :-tabm<cr>
+nmap <silent> <C-l> :+tabm<cr>
 
+" navigating panes in vim
 nmap <silent> <C-right> :wincmd l<cr>
 nmap <silent> <C-left> :wincmd h<cr>
 nmap <silent> <C-up> :wincmd k<cr>
