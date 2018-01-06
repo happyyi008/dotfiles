@@ -1,0 +1,15 @@
+pane	0	0	:main	0	:-	0	:/home/yi/dotfiles	1	bash	:conky
+pane	0	1	:dot	1	:*	0	:/home/yi/dotfiles	1	vim	:vim .vimrc
+pane	0	1	:dot	1	:*	1	:/home/yi/dotfiles	0	bash	:
+pane	0	2	:record	0	:	0	:/home/yi/workspace/record	0	vim	:vim record.py
+pane	0	2	:record	0	:	1	:/home/yi/workspace/record	1	bash	:
+pane	0	3	:cs343	0	:	0	:/home/yi/workspace/cs343/a1	0	vim	:vim q1globalstatusflag.cc
+pane	0	3	:cs343	0	:	1	:/home/yi/workspace/cs343/a1	1	bash	:
+pane	0	3	:cs343	0	:	2	:/home/yi/workspace/cs343/a1	0	bash	:
+pane	0	3	:cs343	0	:	3	:/home/yi/workspace/cs343/a1	0	vim	:vim test.cc
+pane	0	3	:cs343	0	:	4	:/home/yi/workspace/cs343/a1	0	bash	:
+window	0	0	0	:-	b7dd,239x61,0,0,0
+window	0	1	1	:*	8239,239x61,0,0{119x61,0,0,1,119x61,120,0,10}
+window	0	2	0	:	83ca,239x61,0,0{119x61,0,0,2,119x61,120,0,8}
+window	0	3	0	:	d820,239x61,0,0{114x61,0,0,3,124x61,115,0[124x46,115,0{39x46,115,0,5,84x46,155,0,7},124x14,115,47{54x14,115,47,6,69x14,170,47,9}]}
+state	0	

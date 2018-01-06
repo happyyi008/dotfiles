@@ -5,6 +5,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline'
     Plug 'vim-airline/vim-airline-themes'
     Plug 'tpope/vim-fugitive'
+    Plug 'tmux-plugins/vim-tmux-focus-events'
 call plug#end()
 
 " For looks {
@@ -58,6 +59,11 @@ augroup comment_leaders
     autocmd FileType tex              let b:comment_leader = '% '
     autocmd FileType mail             let b:comment_leader = '> '
     autocmd FileType vim              let b:comment_leader = '" '
+augroup end
+
+augroup auto_reload
+    autocmd!
+    au FocusGained,BufEnter * :checktime
 augroup end
 
 noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<CR>/<CR>:nohlsearch<CR>
