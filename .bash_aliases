@@ -28,3 +28,8 @@ alias gsh='git show'
 alias gcl='git clean -fd'
 alias gpb='git push origin `bb`'
 
+# open file with xdg-open and send all output to /dev/null
+open () {
+    xdg-open $1 > /dev/null 2>&1
+}
+

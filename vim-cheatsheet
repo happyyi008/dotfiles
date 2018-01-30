@@ -1,0 +1,21 @@
+VIM
+
+Match and replace end of line with new line
+:%s/$/^V^M/g
+
+Center cursor location
+zz
+
+Go to end of line and insert
+shift-a
+
+
+BASH
+
+Loop through each line in file
+while read p; do echo $p; done < file
+
+Loop n times
+for i in {1..n}; do echo $i; done
+
+
