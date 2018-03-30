@@ -6,7 +6,7 @@ alias l='ls'
 
 ###### grep #######
 # recursive grep in file
-alias fgrep='grep -HrnIi'
+alias fgrep='grep -HrnIi --exclude-dir=.git'
 alias grep='grep --color=auto'
 export GREP_COLOR='1;37;41'
 
