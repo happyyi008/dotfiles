@@ -1,8 +1,10 @@
 #VIM
 
 ###Shortcuts
-zz: Center cursor location
-0 : Go to beginning of the line
+zz              : Center cursor location
+0               : Go to beginning of the line
+:%so ~/.vimrc   : reloads .vimrc
+''!             : copy into system clipboard in visual mode
 
 ###Match and replace end of line with new line
 :%s/$/^V^M/g

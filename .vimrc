@@ -48,6 +48,9 @@ set hlsearch
 " Mac backspace is stupid
 set backspace=indent,eol,start
 
+vmap '' :w !pbcopy<cr><cr>
+
+
 nnoremap <space> i<space><esc>
 
 " Commenting blocks of code.
