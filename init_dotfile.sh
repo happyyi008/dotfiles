@@ -16,3 +16,6 @@ done
 # In Tmux:
 # Install plugins: prefix + I
 
+# Install mdv
+# pip install mdv
+

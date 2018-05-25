@@ -88,3 +88,7 @@ export EDITOR='/usr/bin/vim'
 # set for tmux colors and key binding in vim
 export TERM='xterm-256color'
 
+# terminal markdown theme
+export MDV_THEME=960.847
+export MDV_CODE_THEME=528.9419
+
