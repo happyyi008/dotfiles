@@ -73,10 +73,10 @@ noremap <silent> ,cc :<C-B>silent <C-E>s/^/<C-R>=escape(b:comment_leader,'\/')<C
 noremap <silent> ,cu :<C-B>silent <C-E>s/^\V<C-R>=escape(b:comment_leader,'\/')<CR>//e<CR>:nohlsearch<CR>
 
 " move tabs
-nnoremap H gT
-nnoremap L gt
-nmap <silent> <C-h> :-tabm<cr>
-nmap <silent> <C-l> :+tabm<cr>
+nmap <silent> <C-h> :tabp<cr>
+nmap <silent> <C-l> :tabn<cr>
+nmap <silent> <C-M-h> :-tabm<cr>
+nmap <silent> <C-M-l> :+tabm<cr>
 
 " navigating panes in vim
 nmap <silent> <C-right> :wincmd l<cr>

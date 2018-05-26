@@ -92,3 +92,5 @@ export TERM='xterm-256color'
 export MDV_THEME=960.847
 export MDV_CODE_THEME=528.9419
 
+export GOPATH=/Users/yi/workspace/go
+
