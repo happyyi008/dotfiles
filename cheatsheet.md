@@ -2,8 +2,11 @@
 
 ###Shortcuts
 zz              : Center cursor location
+
 0               : Go to beginning of the line
+
 :%so ~/.vimrc   : reloads .vimrc
+
 ''!             : copy into system clipboard in visual mode
 
 ###Match and replace end of line with new line
@@ -51,9 +54,13 @@ time sleep 1 2> file
 ###Read file into variable
 file=$(<file)
 
+###Less in color
+less -r
 
 ###copy directory recursivly
 cp -r
+
+adb -s 172.16.51.120:5555  shell top -m 1 |  egrep --line-buffered "User .* System .*" | while IFS= read -r line; do printf '%s:%s\n' "$(date +%s)" "$line"; done >> ~/elov1-cpu
 
 
 #########################################################################################

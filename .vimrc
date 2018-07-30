@@ -8,7 +8,6 @@ call plug#begin('~/.vim/plugged')
     Plug 'tmux-plugins/vim-tmux-focus-events'
 call plug#end()
 
-" For looks {
 " requires monokai.vim and fonts-powerline
 syntax on
 colorscheme monokai
@@ -30,8 +29,8 @@ if &term =~ '256color'
 endif
 
 set laststatus=2
-" }
 
+set cursorline
 
 set number
 " keep 5 lines buffer when scrolling
