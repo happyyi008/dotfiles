@@ -83,6 +83,9 @@ nmap <silent> <C-left> :wincmd h<cr>
 nmap <silent> <C-up> :wincmd k<cr>
 nmap <silent> <C-down> :wincmd j<cr>
 
+" new line shortcut
+nmap <cr> :normal o <cr>
+
 " ctrlp settings
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_show_hidden = 1
