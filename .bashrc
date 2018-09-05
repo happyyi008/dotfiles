@@ -65,6 +65,11 @@ stty -ixon
 # set vi mode in prompt
 set -o vi
 
+# open file with xdg-open and send all output to /dev/null
+open () {
+    xdg-open $1 > /dev/null 2>&1
+}
+
 # checks if in a git directory and gets the current branch
 getBranch() {
     if git rev-parse --git-dir > /dev/null 2>&1; then
