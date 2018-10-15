@@ -92,3 +92,4 @@ export MDV_CODE_THEME=528.9419
 
 export GOPATH=/Users/yi/workspace/go
 
+eval "$(direnv hook bash)"
