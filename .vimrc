@@ -6,7 +6,13 @@ call plug#begin('~/.vim/plugged')
     Plug 'vim-airline/vim-airline-themes'
     Plug 'tpope/vim-fugitive'
     Plug 'tmux-plugins/vim-tmux-focus-events'
+    Plug 'google/vim-maktaba'
+    Plug 'google/vim-codefmt'
+    Plug 'google/vim-glaive'
 call plug#end()
+
+call glaive#Install()
+Glaive codefmt plugin[mappings]
 
 " requires monokai.vim and fonts-powerline
 syntax on
@@ -95,3 +101,15 @@ let g:ctrlp_prompt_mappings = {
     \ 'AcceptSelection("t")': ['<cr>'],
     \ }
 
+" codefmt
+augroup autoformat_settings
+  autocmd FileType bzl AutoFormatBuffer buildifier
+  autocmd FileType c,cpp,proto,javascript AutoFormatBuffer clang-format
+  autocmd FileType dart AutoFormatBuffer dartfmt
+  autocmd FileType go AutoFormatBuffer gofmt
+  autocmd FileType gn AutoFormatBuffer gn
+  autocmd FileType html,css,json AutoFormatBuffer js-beautify
+  autocmd FileType java AutoFormatBuffer google-java-format
+  autocmd FileType python AutoFormatBuffer yapf
+  " Alternative: autocmd FileType python AutoFormatBuffer autopep8
+augroup END
