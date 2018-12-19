@@ -12,10 +12,15 @@ zz              : Center cursor location
 ###Match and replace end of line with new line
 :%s/$/^V^M/g
 
+###Delete up to character
+`dt<char>`
 
 ###Go to end of line and insert
 shift-a
 
+###Select word under cursor
+viw # selects word
+vaw # selects leading and trailing spaces
 
 ###Record and replay repeated actions
 record: q[register][action]q
@@ -54,14 +59,22 @@ time sleep 1 2> file
 ###Read file into variable
 file=$(<file)
 
+
 ###Less in color
 less -r
 
+
 ###copy directory recursivly
-cp -r
+`cp -r`
 
-adb -s 172.16.51.120:5555  shell top -m 1 |  egrep --line-buffered "User .* System .*" | while IFS= read -r line; do printf '%s:%s\n' "$(date +%s)" "$line"; done >> ~/elov1-cpu
 
+### tail continuously updated program with grep
+`adb -s 172.16.51.120:5555  shell top -m 1 |  egrep --line-buffered "User .* System .*" | while IFS= read -r line; do printf '%s:%s\n' "$(date +%s)" "$line"; done >> ~/elov1-cpu`
+
+
+###Pretty print json
+`echo '{}' | jq`
+ 
 
 #########################################################################################
 

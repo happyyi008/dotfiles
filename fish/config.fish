@@ -3,6 +3,8 @@ fish_clipboard_copy
 fish_clipboard_paste
 custom_vi
 
+alias ls="exa --color=always"
+alias fgrp="grep -HrnIi --exclude-dir=.git"
 eval (direnv hook fish)
 
 abbr la 'ls -a'
