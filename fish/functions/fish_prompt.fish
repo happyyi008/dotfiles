@@ -1,69 +1,104 @@
-function fish_prompt --description 'Write out the prompt'
-	set -l last_status $status
-    set -l normal (set_color normal)
+function fish_prompt
+	
+    # - green lines if the last return command is OK, red otherwise
+    # - your user name, in red if root or yellow otherwise
+    # - your hostname, in cyan if ssh or blue otherwise
+    # - the current path (with prompt_pwd)
+    # - date +%X
+    # - the current virtual environment, if any
+    # - the current git status, if any, with __fish_git_prompt
+    # - the current battery state, if any, and if your power cable is unplugged, and if you have "acpi"
+    # - current background jobs, if any
 
-    # Hack; fish_config only copies the fish_prompt function (see #736)
-    if not set -q -g __fish_classic_git_functions_defined
-        set -g __fish_classic_git_functions_defined
+    # It goes from:
+    # ┬─[nim@Hattori:~]─[11:39:00]
+    # ╰─>$ echo here
 
-        function __fish_repaint_user --on-variable fish_color_user --description "Event handler, repaint when fish_color_user changes"
-            if status --is-interactive
-                commandline -f repaint ^/dev/null
-            end
-        end
+    # To:
+    # ┬─[nim@Hattori:~/w/dashboard]─[11:37:14]─[V:django20]─[G:master↑1|●1✚1…1]─[B:85%, 05:41:42 remaining]
+    # │ 2	15054	0%	arrêtée	sleep 100000
+    # │ 1	15048	0%	arrêtée	sleep 100000
+    # ╰─>$ echo there
 
-        function __fish_repaint_host --on-variable fish_color_host --description "Event handler, repaint when fish_color_host changes"
-            if status --is-interactive
-                commandline -f repaint ^/dev/null
-            end
-        end
+    set -q __fish_git_prompt_showupstream
+    or set -g __fish_git_prompt_showupstream auto
 
-        function __fish_repaint_status --on-variable fish_color_status --description "Event handler; repaint when fish_color_status changes"
-            if status --is-interactive
-                commandline -f repaint ^/dev/null
-            end
-        end
+    function _nim_prompt_wrapper
+        set retc $argv[1]
+        set field_name $argv[2]
+        set field_value $argv[3]
 
-        function __fish_repaint_bind_mode --on-variable fish_key_bindings --description "Event handler; repaint when fish_key_bindings changes"
-            if status --is-interactive
-                commandline -f repaint ^/dev/null
-            end
-        end
-
-        # initialize our new variables
-        if not set -q __fish_classic_git_prompt_initialized
-            set -qU fish_color_user
-            or set -U fish_color_user -o green
-            set -qU fish_color_host
-            or set -U fish_color_host -o cyan
-            set -qU fish_color_status
-            or set -U fish_color_status red
-            set -U __fish_classic_git_prompt_initialized
-        end
+        set_color normal
+        set_color $retc
+        echo -n '─'
+        set_color -o green
+        echo -n '['
+        set_color normal
+        test -n $field_name
+        and echo -n $field_name:
+        set_color $retc
+        echo -n $field_value
+        set_color -o green
+        echo -n ']'
     end
+    and set retc green
+    or set retc red
 
-    set -l color_cwd
-    set -l prefix
-    set -l suffix
-    switch "$USER"
-        case root toor
-            if set -q fish_color_cwd_root
-                set color_cwd $fish_color_cwd_root
-            else
-                set color_cwd $fish_color_cwd
-            end
-            set suffix '# '
-        case '*'
-            set color_cwd $fish_color_cwd
-            set suffix '~> '
+    set_color $retc
+    echo -n '┬─'
+    set_color -o green
+    echo -n [
+    if test "$USER" = root -o "$USER" = toor
+        set_color -o red
+    else
+        set_color -o yellow
     end
-
-    set -l prompt_status
-    if test $last_status -ne 0
-        set prompt_status ' ' (set_color $fish_color_status) "[$last_status]" $normal
+    echo -n $USER
+    set_color -o white
+    echo -n @
+    if [ -z "$SSH_CLIENT" ]
+        set_color -o blue
+    else
+        set_color -o cyan
     end
+    echo -n (prompt_hostname)
+    set_color -o white
+    echo -n :(prompt_pwd)
+    set_color -o green
+    echo -n ']'
 
-    echo -s $normal (set_color $color_cwd) (prompt_pwd) $normal (__fish_vcs_prompt) $normal
-    echo -n "$USER" $suffix
- 
+    # Date
+    _nim_prompt_wrapper $retc '' (date +%X)
+
+    # Virtual Environment
+    set -q VIRTUAL_ENV
+    and _nim_prompt_wrapper $retc V (basename "$VIRTUAL_ENV")
+
+    # git
+    set prompt_git (__fish_git_prompt | string trim -c ' ()')
+    test -n "$prompt_git"
+    and _nim_prompt_wrapper $retc G $prompt_git
+
+    # Battery status
+    type -q acpi
+    and test (acpi -a 2> /dev/null | string match -r off)
+    and _nim_prompt_wrapper $retc B (acpi -b | cut -d' ' -f 4-)
+
+    # New line
+    echo
+
+    # Background jobs
+    set_color normal
+    for job in (jobs)
+        set_color $retc
+        echo -n '│ '
+        set_color brown
+        echo $job
+    end
+    set_color normal
+    set_color $retc
+    echo -n '╰─>'
+    set_color -o red
+    echo -n '$ '
+    set_color normal
 end
